@@ -2,7 +2,7 @@
   "name": "vscode-whatchanged",
   "displayName": "whatchanged",
   "description": "Generate changelog for git project",
-  "version": "2.6.12",
+  "version": "0.1.0",
   "publisher": "axetroy",
   "engines": {
     "vscode": "^1.61.0"
