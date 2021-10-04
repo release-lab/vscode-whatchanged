@@ -99,8 +99,6 @@ jobs:
     needs: ci
     steps:
       - uses: actions/download-artifact@v2
-        with:
-          name: package
 
       - uses: softprops/action-gh-release@v1
         name: publish to Github
