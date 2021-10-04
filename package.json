@@ -1,0 +1,98 @@
+{
+  "name": "vscode-whatchanged",
+  "displayName": "whatchanged",
+  "description": "Generate changelog for git project",
+  "version": "2.6.12",
+  "publisher": "axetroy",
+  "engines": {
+    "vscode": "^1.61.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/whatchanged-community/vscode-whatchanged.git"
+  },
+  "license": "Anti-996",
+  "bugs": {
+    "url": "https://github.com/whatchanged-community/vscode-whatchanged/issues"
+  },
+  "homepage": "https://github.com/whatchanged-community/vscode-whatchanged#readme",
+  "keywords": [],
+  "categories": [
+    "Other"
+  ],
+  "icon": "resources/logo.png",
+  "main": "./out/index.js",
+  "activationEvents": [
+    "onCommand:whatchanged.generate",
+    "onCommand:whatchanged.generateAll"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "whatchanged.generate",
+        "title": "%cmd.generate.title%",
+        "category": "whatchanged"
+      },
+      {
+        "command": "whatchanged.generateAll",
+        "title": "%cmd.generateAll.title%",
+        "category": "whatchanged"
+      }
+    ],
+    "menus": {
+      "scm/title": [
+        {
+          "command": "whatchanged.generate"
+        },
+        {
+          "command": "whatchanged.generateAll"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "whatchanged.generate"
+        },
+        {
+          "command": "whatchanged.generateAll"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run lint && tsc -p ./ && npm run compile",
+    "clean": "rimraf ./out",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "test": "npm run compile && node ./node_modules/vscode/bin/test",
+    "changelog": "whatchanged HEAD~ > CHANGELOG.md",
+    "publish": "npx vsce publish",
+    "package": "npx vsce package",
+    "postinstall": "node script/install-whatchanged.js"
+  },
+  "devDependencies": {
+    "@types/byline": "4.2.33",
+    "@types/fs-extra": "9.0.13",
+    "@types/lodash": "4.14.173",
+    "@types/mocha": "9.0.0",
+    "@types/node": "14.17.17",
+    "@types/vscode": "1.60.0",
+    "@types/which": "2.0.1",
+    "@typescript-eslint/eslint-plugin": "4.32.0",
+    "@typescript-eslint/parser": "4.32.0",
+    "download": "^8.0.0",
+    "eslint": "7.32.0",
+    "progress": "^2.0.3",
+    "rimraf": "3.0.2",
+    "tar": "^6.1.11",
+    "typescript": "4.4.3"
+  },
+  "dependencies": {
+    "execa": "5.1.1",
+    "fs-extra": "10.0.0",
+    "reflect-metadata": "^0.1.13",
+    "typedi": "^0.10.0",
+    "vscode-nls": "^5.0.0",
+    "vscode-nls-i18n": "0.2.4"
+  }
+}
