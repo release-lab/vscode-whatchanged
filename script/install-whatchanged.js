@@ -10,8 +10,8 @@ const ProgressBar = require("progress");
 const archMaps = {
   x32: "386",
   ia32: "386",
-  armhf: 'arm7',
-  arm: "arm7",
+  armhf: 'armv7',
+  arm: "armv7",
   x64: "amd64",
 };
 
