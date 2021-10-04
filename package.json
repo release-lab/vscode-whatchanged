@@ -1,7 +1,7 @@
 {
   "name": "vscode-whatchanged",
   "displayName": "whatchanged",
-  "description": "Generate changelog for git project",
+  "description": "变更日志生成器 Generate changelog for git project",
   "version": "0.1.1",
   "publisher": "axetroy",
   "engines": {
