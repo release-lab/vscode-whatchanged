@@ -10,13 +10,29 @@ const ProgressBar = require("progress");
 const archMaps = {
   x32: "386",
   ia32: "386",
+  armhf: 'arm7',
   arm: "arm7",
   x64: "amd64",
 };
 
+const target = process.env.TARGET || `${process.platform}-${process.arch}`
+
+const [_platform, _arch] = target.split('-')
+
+function getPlatform(p) {
+  switch (p) {
+    case 'win32':
+      return 'windows'
+    case 'alpine':
+      return 'linux'
+    default:
+      return p
+  }
+}
+
 const version = "v0.4.1";
-const platform = process.platform === "win32" ? "windows" : process.platform;
-const arch = archMaps[process.arch] ?? process.arch;
+const platform = getPlatform(_platform)
+const arch = archMaps[_arch] ?? _arch;
 
 const url = new URL(
   `https://github.com/whatchanged-community/whatchanged/releases/download/${version}/whatchanged_${platform}_${arch}.tar.gz`

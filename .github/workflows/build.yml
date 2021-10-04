@@ -60,14 +60,15 @@ jobs:
           npm -v
           npm --version
 
+      - shell: pwsh
+        run: echo "target=${{ matrix.platform }}-${{ matrix.arch }}" >> $env:GITHUB_ENV
+
       - name: Install
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           npm_config_arch: ${{ matrix.npm_config_arch }}
+          TARGET: ${{ env.target }}
         run: npm install
-
-      - shell: pwsh
-        run: echo "target=${{ matrix.platform }}-${{ matrix.arch }}" >> $env:GITHUB_ENV
 
       - name: Lint
         run: |
