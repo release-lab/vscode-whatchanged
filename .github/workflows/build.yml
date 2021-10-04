@@ -6,6 +6,7 @@ jobs:
   ci:
     strategy:
       matrix:
+        # https://github.com/microsoft/vscode-platform-specific-sample/blob/main/.github/workflows/ci.yml
         include:
           - os: windows-latest
             platform: win32
@@ -108,7 +109,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
           files: |
-            ./vscode-whatchanged.vsix
+            *.vsix
           draft: false
 
       - uses: actions/setup-node@v2
@@ -116,5 +117,6 @@ jobs:
           node-version: "14.x"
 
       - name: publish to vscode market
-        # require Azure DevOps Personal Access Token
-        run: npx vsce publish --packagePath ./vscode-whatchanged.vsix --pat ${{ secrets.ADO_TOKEN }}
+        run: npx vsce publish --packagePath $(find . -iname *.vsix)
+        env:
+          VSCE_PAT: ${{ secrets.ADO_TOKEN }}
