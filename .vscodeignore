@@ -9,3 +9,4 @@ resources/screenshot/*
 *.log
 .DS_Store
 renovate.json
+script
