@@ -8,6 +8,9 @@
 
 vscode extension for [whatchanged](https://github.com/whatchanged-community/whatchanged)
 
+![screenshot-1.png](screenshot-1.png)
+![screenshot-2.png](screenshot-2.png)
+
 ## Commands
 
 | Command                 | description            |
