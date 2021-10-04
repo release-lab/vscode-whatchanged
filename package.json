@@ -20,7 +20,7 @@
   "categories": [
     "Other"
   ],
-  "icon": "resources/logo.png",
+  "icon": "resources/logo.svg",
   "main": "./out/index.js",
   "activationEvents": [
     "onCommand:whatchanged.generate",
