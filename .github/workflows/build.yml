@@ -57,37 +57,39 @@ jobs:
         run: |
           node -v
           npm -v
-          yarn --version
+          npm --version
 
       - name: Install
-        run: |
-          yarn
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          npm_config_arch: ${{ matrix.npm_config_arch }}
+        run: npm install
+
+      - shell: pwsh
+        run: echo "target=${{ matrix.platform }}-${{ matrix.arch }}" >> $env:GITHUB_ENV
 
       - name: Lint
         run: |
           npm run lint
 
       - name: Compile
-        run: |
-          yarn run compile
+        run: npm run compile
 
       - uses: axetroy/setup-whatchanged@v1
         with:
           version: v0.4.1
 
       - name: Generate CHANGELOG.md
-        run: |
-          whatchanged HEAD~ > CHANGELOG.md
+        run: whatchanged HEAD~ > CHANGELOG.md
 
       - name: Package
-        run: |
-          npx vsce package -o ./vscode-whatchanged.vsix
+        run: npx vsce package --target ${{ env.target }}
 
       - uses: actions/upload-artifact@v2
         if: runner.os == 'linux'
         with:
-          name: package
-          path: ./vscode-whatchanged.vsix
+          name: ${{ env.target }}
+          path: "*.vsix"
 
   release:
     runs-on: ubuntu-latest
