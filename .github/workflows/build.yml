@@ -77,13 +77,6 @@ jobs:
       - name: Compile
         run: npm run compile
 
-      - uses: axetroy/setup-whatchanged@v1
-        with:
-          version: v0.4.1
-
-      - name: Generate CHANGELOG.md
-        run: whatchanged HEAD~ > CHANGELOG.md
-
       - name: Package
         run: npx vsce package --target ${{ env.target }}
 
@@ -98,7 +91,20 @@ jobs:
     if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/') && github.repository == 'whatchanged-community/vscode-whatchanged'
     needs: ci
     steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - uses: axetroy/setup-whatchanged@v1
+        with:
+          version: v0.4.1
+
+      - name: Generate CHANGELOG.md
+        run: whatchanged HEAD~ > CHANGELOG.md
+
       - uses: actions/download-artifact@v2
+
+      - run: ls -lh
 
       - uses: softprops/action-gh-release@v1
         name: publish to Github
