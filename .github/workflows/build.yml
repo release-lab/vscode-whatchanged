@@ -102,12 +102,16 @@ jobs:
 
       - run: ls -lh
 
+      - shell: pwsh
+        run: echo "target=${{ matrix.platform }}-${{ matrix.arch }}" >> $env:RELEASE_NOTE
+
       - uses: softprops/action-gh-release@v1
         name: publish to Github
         env:
           # require Github Personal Access Token
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
+          body: ${{ env.RELEASE_NOTE }}
           files: |
             *.vsix
           draft: false
@@ -116,7 +120,7 @@ jobs:
         with:
           node-version: "14.x"
 
-      - name: publish to vscode market
-        run: npx vsce publish --packagePath $(find . -iname *.vsix)
-        env:
-          VSCE_PAT: ${{ secrets.ADO_TOKEN }}
+      # - name: publish to vscode market
+      #   run: npx vsce publish --packagePath $(find . -iname *.vsix)
+      #   env:
+      #     VSCE_PAT: ${{ secrets.ADO_TOKEN }}
