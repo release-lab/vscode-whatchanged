@@ -9,13 +9,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/whatchanged-community/vscode-whatchanged.git"
+    "url": "git+https://github.com/release-lab/vscode-whatchanged.git"
   },
   "license": "Anti-996",
   "bugs": {
-    "url": "https://github.com/whatchanged-community/vscode-whatchanged/issues"
+    "url": "https://github.com/release-lab/vscode-whatchanged/issues"
   },
-  "homepage": "https://github.com/whatchanged-community/vscode-whatchanged#readme",
+  "homepage": "https://github.com/release-lab/vscode-whatchanged#readme",
   "keywords": [],
   "categories": [
     "Other"

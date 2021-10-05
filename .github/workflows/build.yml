@@ -95,7 +95,7 @@ jobs:
   release:
     runs-on: ubuntu-latest
     name: "Release to vscode market and github"
-    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/') && github.repository == 'whatchanged-community/vscode-whatchanged'
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/') && github.repository == 'release-lab/vscode-whatchanged'
     needs: ci
     steps:
       - uses: actions/download-artifact@v2

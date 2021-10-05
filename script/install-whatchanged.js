@@ -35,7 +35,7 @@ const platform = getPlatform(_platform)
 const arch = archMaps[_arch] ?? _arch;
 
 const url = new URL(
-  `https://github.com/whatchanged-community/whatchanged/releases/download/${version}/whatchanged_${platform}_${arch}.tar.gz`
+  `https://github.com/release-lab/whatchanged/releases/download/${version}/whatchanged_${platform}_${arch}.tar.gz`
 );
 
 console.log("Downloading: ", url.toString());
