@@ -100,7 +100,7 @@ jobs:
     steps:
       - uses: actions/download-artifact@v2
 
-      - run: ls -lh
+      - run: tree
 
       - shell: pwsh
         run: echo "target=${{ matrix.platform }}-${{ matrix.arch }}" >> $env:RELEASE_NOTE
@@ -113,14 +113,22 @@ jobs:
         with:
           body: ${{ env.RELEASE_NOTE }}
           files: |
-            *.vsix
+            alpine-x64/*.vsix
+            darwin-arm64/*.vsix
+            darwin-x64/*.vsix
+            linux-arm64/*.vsix
+            linux-armhf/*.vsix
+            linux-x64/*.vsix
+            win32-arm64/*.vsix
+            win32-ia32/*.vsix
+            win32-x64/*.vsix
           draft: false
 
       - uses: actions/setup-node@v2
         with:
           node-version: "14.x"
 
-      # - name: publish to vscode market
-      #   run: npx vsce publish --packagePath $(find . -iname *.vsix)
-      #   env:
-      #     VSCE_PAT: ${{ secrets.ADO_TOKEN }}
+      - name: publish to vscode market
+        run: npx vsce publish --packagePath $(find . -iname *.vsix)
+        env:
+          VSCE_PAT: ${{ secrets.ADO_TOKEN }}
