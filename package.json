@@ -42,10 +42,12 @@
     "menus": {
       "scm/title": [
         {
-          "command": "whatchanged.generate"
+          "command": "whatchanged.generate",
+          "when": "scmProvider == git"
         },
         {
-          "command": "whatchanged.generateAll"
+          "command": "whatchanged.generateAll",
+          "when": "scmProvider == git"
         }
       ],
       "commandPalette": [
