@@ -21,6 +21,9 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
       project = workspaceFolder.uri.fsPath;
     }
 
+    // FUCK windows
+    project = project.replace(/^(\/|\\)?([a-z]):/, ($0, $1, $2) => $2.toUpperCase() + ":");
+
     if (version === undefined) {
       version = await vscode.window.showInputBox({
         value: "",
@@ -49,17 +52,17 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
 
   context.subscriptions.push(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    vscode.commands.registerCommand("whatchanged.generate", (item: any) => {
+    vscode.commands.registerCommand("whatchanged.generate", async (item: any) => {
       const project = item?._rootUri?.path ?? undefined;
-      generate(project);
+      return generate(project);
     })
   );
 
   context.subscriptions.push(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    vscode.commands.registerCommand("whatchanged.generateAll", (item: any) => {
+    vscode.commands.registerCommand("whatchanged.generateAll", async (item: any) => {
       const project = item?._rootUri?.path ?? undefined;
-      generate(project, "HEAD~");
+      return generate(project, "HEAD~");
     })
   );
 }
