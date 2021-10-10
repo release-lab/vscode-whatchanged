@@ -1,9 +1,7 @@
 /* eslint-disable */
-const http = require("https"); // or 'https' for https:// URLs
 const fs = require("fs");
 const path = require("path");
 const tar = require("tar");
-const zlib = require("zlib");
 const download = require("download");
 const ProgressBar = require("progress");
 
