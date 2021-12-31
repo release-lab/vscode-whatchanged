@@ -2,10 +2,12 @@
 import * as vscode from "vscode";
 import * as path from "path";
 import execa from "execa";
+import { init, localize } from 'vscode-nls-i18n'
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export async function activate(context: vscode.ExtensionContext): Promise<void> {
+  init(context.extensionPath);
   const whatchangedFilepath = path.join(
     context.extensionPath,
     "vendor",
@@ -27,8 +29,8 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
     if (version === undefined) {
       version = await vscode.window.showInputBox({
         value: "",
-        prompt: "eg. HEAD~",
-        placeHolder: "Please enter the version range",
+        prompt: localize('cmd.generate.prompt'),
+        placeHolder: localize('cmd.generate.placeholder'),
       });
 
       if (version === undefined) return;

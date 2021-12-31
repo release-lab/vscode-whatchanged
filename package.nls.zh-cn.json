@@ -1,4 +1,6 @@
 {
   "cmd.generate.title": "生成变更日志",
+  "cmd.generate.placeholder": "例如 'HEAD~'",
+  "cmd.generate.prompt": "请输入版本范围. 请在 https://github.com/release-lab/whatchanged 查看详情。",
   "cmd.generateAll.title": "生成全部变更日志"
 }
