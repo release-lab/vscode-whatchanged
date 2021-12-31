@@ -2,7 +2,7 @@
   "name": "vscode-whatchanged",
   "displayName": "whatchanged",
   "description": "变更日志生成器 Generate changelog for git project",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "publisher": "axetroy",
   "engines": {
     "vscode": "^1.61.0"
@@ -16,7 +16,12 @@
     "url": "https://github.com/release-lab/vscode-whatchanged/issues"
   },
   "homepage": "https://github.com/release-lab/vscode-whatchanged#readme",
-  "keywords": ["changelog", "whatchanged", "Conventional", "commit"],
+  "keywords": [
+    "changelog",
+    "whatchanged",
+    "Conventional",
+    "commit"
+  ],
   "categories": [
     "Other"
   ],
