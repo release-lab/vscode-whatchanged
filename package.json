@@ -16,7 +16,7 @@
     "url": "https://github.com/release-lab/vscode-whatchanged/issues"
   },
   "homepage": "https://github.com/release-lab/vscode-whatchanged#readme",
-  "keywords": [],
+  "keywords": ["changelog", "whatchanged", "Conventional", "commit"],
   "categories": [
     "Other"
   ],
