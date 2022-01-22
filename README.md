@@ -6,7 +6,9 @@
 
 # vscode-whatchanged
 
-vscode extension for [whatchanged](https://github.com/release-lab/whatchanged)
+vscode extension for [whatchanged](https://github.com/release-lab/whatchanged).
+
+generate changelog.
 
 ![screenshot.gif](screenshot.gif)
 ![screenshot-1.png](screenshot-1.png)
