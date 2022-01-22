@@ -28,7 +28,7 @@ function getPlatform(p) {
   }
 }
 
-const version = "v0.5.4";
+const version = "v0.5.5";
 const platform = getPlatform(_platform)
 const arch = archMaps[_arch] ?? _arch;
 
